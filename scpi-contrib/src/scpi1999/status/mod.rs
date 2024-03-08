@@ -40,7 +40,13 @@ where
     D: ScpiDevice,
 {
     cmd_nquery!();
-    fn event(&self, device: &mut D, _context: &mut Context, _params: Parameters) -> Result<()> {
+    fn event(
+        &self,
+        device: &mut D,
+        _context: &mut Context,
+        _params: Parameters,
+        _response: ResponseUnit,
+    ) -> Result<()> {
         device.preset()
     }
 }
@@ -123,7 +129,13 @@ where
 {
     cmd_both!();
 
-    fn event(&self, device: &mut D, _context: &mut Context, mut params: Parameters) -> Result<()> {
+    fn event(
+        &self,
+        device: &mut D,
+        _context: &mut Context,
+        mut params: Parameters,
+        _response: ResponseUnit,
+    ) -> Result<()> {
         device.register_mut().enable = params.next_data()?;
         Ok(())
     }
@@ -156,7 +168,13 @@ where
 {
     cmd_both!();
 
-    fn event(&self, device: &mut D, _context: &mut Context, mut params: Parameters) -> Result<()> {
+    fn event(
+        &self,
+        device: &mut D,
+        _context: &mut Context,
+        mut params: Parameters,
+        _response: ResponseUnit,
+    ) -> Result<()> {
         device.register_mut().ntr_filter = params.next_data()?;
         Ok(())
     }
@@ -191,7 +209,13 @@ where
 {
     cmd_both!();
 
-    fn event(&self, device: &mut D, _context: &mut Context, mut params: Parameters) -> Result<()> {
+    fn event(
+        &self,
+        device: &mut D,
+        _context: &mut Context,
+        mut params: Parameters,
+        _response: ResponseUnit,
+    ) -> Result<()> {
         device.register_mut().ptr_filter = params.next_data()?;
         Ok(())
     }

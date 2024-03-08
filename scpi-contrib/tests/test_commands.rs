@@ -70,6 +70,7 @@ impl Command<TestDevice> for ErrorCommand {
         device: &mut TestDevice,
         _context: &mut Context,
         mut params: Parameters,
+        _response: ResponseUnit
     ) -> Result<()> {
         let errcode: i16 = params.next_data()?;
         device.handle_error(
@@ -91,6 +92,7 @@ impl Command<TestDevice> for OperCommand {
         device: &mut TestDevice,
         _context: &mut Context,
         mut params: Parameters,
+        _response: ResponseUnit
     ) -> Result<()> {
         let condition: u16 = params.next_data()?;
         device
@@ -110,6 +112,7 @@ impl Command<TestDevice> for QuesCommand {
         device: &mut TestDevice,
         _context: &mut Context,
         mut params: Parameters,
+        _response: ResponseUnit
     ) -> Result<()> {
         let condition: u16 = params.next_data()?;
         device
@@ -146,6 +149,7 @@ impl Command<TestDevice> for EventCommand {
         _device: &mut TestDevice,
         _context: &mut Context,
         _params: Parameters,
+        _response: ResponseUnit
     ) -> Result<()> {
         Ok(())
     }

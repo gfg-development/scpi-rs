@@ -58,7 +58,13 @@ where
 {
     cmd_nquery!();
 
-    fn event(&self, device: &mut D, _context: &mut Context, _params: Parameters) -> Result<()> {
+    fn event(
+        &self,
+        device: &mut D,
+        _context: &mut Context,
+        _params: Parameters,
+        _response: ResponseUnit,
+    ) -> Result<()> {
         // Clear any device specific status
         device.cls()
     }
@@ -78,7 +84,13 @@ where
 {
     cmd_both!();
 
-    fn event(&self, device: &mut D, _context: &mut Context, mut params: Parameters) -> Result<()> {
+    fn event(
+        &self,
+        device: &mut D,
+        _context: &mut Context,
+        mut params: Parameters,
+        _response: ResponseUnit,
+    ) -> Result<()> {
         let ese = params.next_data()?;
         device.set_ese(ese);
         Ok(())
@@ -193,7 +205,13 @@ where
 {
     cmd_both!();
 
-    fn event(&self, device: &mut D, _context: &mut Context, _params: Parameters) -> Result<()> {
+    fn event(
+        &self,
+        device: &mut D,
+        _context: &mut Context,
+        _params: Parameters,
+        _response: ResponseUnit,
+    ) -> Result<()> {
         device.opc()
     }
 
@@ -244,7 +262,13 @@ where
 {
     cmd_nquery!();
 
-    fn event(&self, device: &mut D, _context: &mut Context, _params: Parameters) -> Result<()> {
+    fn event(
+        &self,
+        device: &mut D,
+        _context: &mut Context,
+        _params: Parameters,
+        _response: ResponseUnit,
+    ) -> Result<()> {
         device.rst()
     }
 }
@@ -263,7 +287,13 @@ where
 {
     cmd_both!();
 
-    fn event(&self, device: &mut D, _context: &mut Context, mut params: Parameters) -> Result<()> {
+    fn event(
+        &self,
+        device: &mut D,
+        _context: &mut Context,
+        mut params: Parameters,
+        _response: ResponseUnit,
+    ) -> Result<()> {
         let sre = params.next_data()?;
         device.set_sre(sre);
         Ok(())
@@ -360,7 +390,13 @@ where
     D: Device + IEEE4882,
 {
     cmd_nquery!();
-    fn event(&self, _device: &mut D, _context: &mut Context, _params: Parameters) -> Result<()> {
+    fn event(
+        &self,
+        _device: &mut D,
+        _context: &mut Context,
+        _params: Parameters,
+        _response: ResponseUnit,
+    ) -> Result<()> {
         Ok(())
     }
 }

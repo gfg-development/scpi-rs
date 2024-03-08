@@ -187,7 +187,13 @@ pub trait Command<D: Device> {
     /// Called when the event form `COMmand` is used.
     ///
     /// Default behaviour returns a [ErrorCode::UndefinedHeader] error.
-    fn event(&self, _device: &mut D, _context: &mut Context, _params: Parameters) -> Result<()> {
+    fn event(
+        &self,
+        _device: &mut D,
+        _context: &mut Context,
+        _params: Parameters,
+        _resp: ResponseUnit,
+    ) -> Result<()> {
         Err(ErrorCode::UndefinedHeader.into())
     }
 
@@ -213,7 +219,13 @@ impl<D> Command<D> for Todo
 where
     D: Device,
 {
-    fn event(&self, _device: &mut D, _context: &mut Context, _params: Parameters) -> Result<()> {
+    fn event(
+        &self,
+        _device: &mut D,
+        _context: &mut Context,
+        _params: Parameters,
+        _response: ResponseUnit,
+    ) -> Result<()> {
         todo!()
     }
 
@@ -279,6 +291,7 @@ mod test_command {
             _device: &mut TestCommandDevice,
             _context: &mut Context,
             _params: Parameters,
+            _response: ResponseUnit,
         ) -> Result<()> {
             Ok(())
         }
@@ -296,6 +309,7 @@ mod test_command {
             _device: &mut TestCommandDevice,
             _context: &mut Context,
             _params: Parameters,
+            _response: ResponseUnit,
         ) -> Result<()> {
             Ok(())
         }

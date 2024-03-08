@@ -373,7 +373,8 @@ where
                         tokens.next_if(|t| matches!(t, Ok(Token::ProgramHeaderSeparator)));
 
                         // Execute handler
-                        handler.event(device, context, Parameters::with(tokens))
+                        let response_unit = response.response_unit()?;
+                        handler.event(device, context, Parameters::with(tokens), response_unit)
                     }
                     // Branch?..
                     Some(Token::HeaderQuerySuffix) => {
